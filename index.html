@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anjali Patel | Portfolio</title>
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="styles/common.css" />
+
+    <!-- Home Page Specific CSS -->
+    <link rel="stylesheet" href="styles/home.css" />
+  </head>
+
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm Anjali Patel</h1>
+        <p>
+          Final-year CSE(AIML) Student | AI Enthusiast | Space Science Lover 🚀
+        </p>
+        <a href="about.html" class="btn">Learn More About Me</a>
+      </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Common JS -->
+    <script src="scripts/common.js"></script>
+
+    <!-- Home Page Specific JS -->
+    <script src="scripts/home.js"></script>
+
+    <!-- Load Header and Footer -->
+    <script>
+      // Load header
+      fetch("components/header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+          if (typeof setupSidebarToggle === "function") setupSidebarToggle();
+        });
+
+      // Load footer
+      fetch("components/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

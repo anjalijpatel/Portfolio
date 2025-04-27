@@ -1,0 +1,121 @@
+/* Reset some default margins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and font */
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: #f5f5f5;
+  background-color: #111;
+  margin-left: 0;
+}
+
+#menu-toggle {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1100;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.5rem;
+}
+#menu-toggle .bar {
+  width: 28px;
+  height: 3px;
+  background: #f5f5f5;
+  border-radius: 2px;
+  display: block;
+  margin: 4px 0;
+  transition: background 0.2s;
+}
+#menu-toggle .bar:hover {
+  background: #ffd700;
+}
+#menu-toggle .dots {
+  display: none;
+} /* Hide old dot style if present */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transform: translateX(-220px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar a {
+  color: #f5f5f5;
+  margin: 1rem 0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar a:hover {
+  background: #222;
+  color: #ffd700;
+}
+
+nav {
+  /* Remove old navbar styles */
+  background: none;
+  padding: 0;
+  display: block;
+  justify-content: unset;
+  align-items: unset;
+}
+
+footer {
+  background-color: #181818;
+  color: #bbb;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Overlay for when sidebar is open */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+#sidebar.open ~ #sidebar-overlay {
+  display: block;
+}
+
+@media (min-width: 700px) {
+  #menu-toggle {
+    top: 2rem;
+    left: 2rem;
+  }
+}
