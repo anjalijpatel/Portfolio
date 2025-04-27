@@ -10,13 +10,18 @@ function setupSidebarToggle() {
   }
   function closeSidebar() {
     sidebar.classList.remove("open");
+    menuToggle.classList.remove("open");
     overlay.style.display = "none";
   }
   menuToggle.addEventListener("click", function () {
-    sidebar.classList.toggle("open");
-    overlay.style.display = sidebar.classList.contains("open")
-      ? "block"
-      : "none";
+    const isOpen = sidebar.classList.toggle("open");
+    menuToggle.classList.toggle("open", isOpen);
+    overlay.style.display = isOpen ? "block" : "none";
   });
   overlay.addEventListener("click", closeSidebar);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && sidebar.classList.contains("open")) {
+      closeSidebar();
+    }
+  });
 }
