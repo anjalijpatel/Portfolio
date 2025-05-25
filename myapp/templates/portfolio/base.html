@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anjali Patel | Cosmic Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="{% static 'js/script.js' %}" defer></script>
+  </head>
+  <body>
+    <div class="parallax-bg"></div>
+    <!-- Cosmic Stars Canvas -->
+    <canvas id="stars-canvas"></canvas>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <h1>Anjali</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="header">
+        <h2>Welcome to My Universe</h2>
+      </header>
+
+      <main>{% block content %}{% endblock %}</main>
+
+      <footer class="footer">
+        <p>© 2025 Anjali Patel. Built with 💜, Django, and cosmic dreams.</p>
+      </footer>
+    </div>
+  </body>
+</html>

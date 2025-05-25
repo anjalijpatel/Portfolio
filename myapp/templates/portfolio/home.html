@@ -1,0 +1,66 @@
+{% extends 'portfolio/base.html' %} {% load static %} {% block content %}
+<section class="hero">
+  <img
+    src="{% static 'images/astronaut.svg' %}"
+    alt="Astronaut floating"
+    class="hero-img"
+  />
+  <div class="hero-text">
+    <h1>Hi, I'm Anjali 👋</h1>
+    
+    <p>A Software Developer • AI Enthusiast • Space Explorer at Heart</p>
+    <a href="/projects" class="btn">🚀 View My Projects</a>
+    <a href="{% static 'files/Anjali_Patel_Resume.pdf' %}" class="btn-secondary"
+      >📄 Download Resume</a
+    >
+  </div>
+</section>
+
+<section class="about">
+  <h2>💡 Who am I?</h2>
+  <p>
+    I'm a final-year Computer Science student specializing in AI/ML, passionate
+    about space and building impactful software solutions.
+  </p>
+  <p>🛠️ Tech Stack: Python | Django | C++ | JavaScript | TensorFlow | SQL</p>
+  <p>🌌 Interests: Space Science • AI Research • Software Architecture</p>
+</section>
+
+<section class="projects">
+  <h2>🚧 Featured Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>AI Resume Analyzer</h3>
+      <p>A Django web app that analyzes resumes using NLP and ML models.</p>
+    </div>
+    <div class="project-card">
+      <h3>Crime Data Analysis</h3>
+      <p>
+        Web platform to visualize and report crime data using Django & Python.
+      </p>
+    </div>
+    <div class="project-card">
+      <h3>Online MCQ Exam</h3>
+      <p>A secure and interactive exam system built using PHP and JS.</p>
+    </div>
+  </div>
+</section>
+
+<section class="blog">
+  <h2>📝 Latest from My Universe</h2>
+  <ul>
+    <li>How Space Science Inspires My Coding Journey 🌠</li>
+    <li>AI for Everyone: My Experience with TensorFlow 🤖</li>
+    <li>Balancing Perfection & Productivity in Code 🛠️✨</li>
+  </ul>
+</section>
+
+<section class="contact">
+  <h2>📫 Let’s Connect</h2>
+  <p>Email: anjalipat***@gmail.com</p>
+  <p>
+    <a href="https://github.com/anjali">GitHub</a> |
+    <a href="https://linkedin.com/in/anjali">LinkedIn</a>
+  </p>
+</section>
+{% endblock %}
