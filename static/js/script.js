@@ -79,7 +79,6 @@ for (let i = 0; i < 200; i++) {
 }
 
 function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   stars.forEach((star) => {
     ctx.save();
     ctx.beginPath();
@@ -165,67 +164,15 @@ function drawNebula() {
   }
 }
 
-// Add planets
-const planets = [
-  {
-    x: 0.13,
-    y: 0.82,
-    r: 38,
-    color: "rgba(255, 200, 80, 0.8)",
-    ring: true,
-  },
-  {
-    x: 0.85,
-    y: 0.18,
-    r: 22,
-    color: "rgba(120, 200, 255, 0.7)",
-    ring: false,
-  },
-  {
-    x: 0.7,
-    y: 0.7,
-    r: 16,
-    color: "rgba(180, 255, 180, 0.6)",
-    ring: false,
-  },
-];
-function drawPlanets() {
-  planets.forEach((p) => {
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(canvas.width * p.x, canvas.height * p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = p.color;
-    ctx.shadowColor = p.color;
-    ctx.shadowBlur = 18;
-    ctx.fill();
-    if (p.ring) {
-      ctx.beginPath();
-      ctx.ellipse(
-        canvas.width * p.x,
-        canvas.height * p.y,
-        p.r * 1.5,
-        p.r * 0.5,
-        Math.PI / 6,
-        0,
-        Math.PI * 2
-      );
-      ctx.strokeStyle = "rgba(255,255,255,0.25)";
-      ctx.lineWidth = 3;
-      ctx.stroke();
-    }
-    ctx.restore();
-  });
-}
-
 // Add cosmic dust (tiny, fast-moving particles)
 const dustParticles = [];
 for (let i = 0; i < 60; i++) {
   dustParticles.push({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
-    r: Math.random() * 0.7 + 0.2,
+    r: Math.random() * 1.2 + 0.5, // larger dust
     speed: Math.random() * 1.2 + 0.5,
-    alpha: Math.random() * 0.3 + 0.1,
+    alpha: Math.random() * 0.5 + 0.3, // more opaque
   });
 }
 function drawDust() {
@@ -242,74 +189,6 @@ function drawDust() {
       d.y = Math.random() * canvas.height;
     }
   });
-}
-
-// Add a subtle aurora effect
-function drawAurora() {
-  const auroraY =
-    canvas.height * 0.12 + Math.sin(performance.now() / 2000) * 10;
-  const auroraGradient = ctx.createLinearGradient(
-    0,
-    auroraY,
-    canvas.width,
-    auroraY + 60
-  );
-  auroraGradient.addColorStop(0, "rgba(80,255,180,0.10)");
-  auroraGradient.addColorStop(0.5, "rgba(120,180,255,0.13)");
-  auroraGradient.addColorStop(1, "rgba(255,120,255,0.10)");
-  ctx.save();
-  ctx.globalAlpha = 0.7;
-  ctx.fillStyle = auroraGradient;
-  ctx.fillRect(0, auroraY, canvas.width, 60);
-  ctx.restore();
-}
-
-// Add a glowing comet that occasionally flies across the screen
-let comet = null;
-function createComet() {
-  if (!comet && Math.random() < 0.003) {
-    const angle = (Math.random() * Math.PI) / 3 + Math.PI / 6; // 30-60 degrees
-    comet = {
-      x: -100,
-      y: Math.random() * canvas.height * 0.7 + 30,
-      vx: Math.cos(angle) * (8 + Math.random() * 4),
-      vy: Math.sin(angle) * (3 + Math.random() * 2),
-      tail: [],
-      life: 0,
-      color: "rgba(255,255,200,0.85)",
-    };
-  }
-}
-function drawComet() {
-  if (!comet) return;
-  comet.tail.unshift({ x: comet.x, y: comet.y });
-  if (comet.tail.length > 30) comet.tail.pop();
-  ctx.save();
-  for (let i = 0; i < comet.tail.length; i++) {
-    ctx.beginPath();
-    ctx.arc(comet.tail[i].x, comet.tail[i].y, 7 - i * 0.18, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,200,${0.18 - i * 0.005})`;
-    ctx.shadowColor = "rgba(255,255,200,0.7)";
-    ctx.shadowBlur = 12 - i * 0.3;
-    ctx.fill();
-  }
-  ctx.beginPath();
-  ctx.arc(comet.x, comet.y, 8, 0, Math.PI * 2);
-  ctx.fillStyle = comet.color;
-  ctx.shadowColor = "rgba(255,255,200,1)";
-  ctx.shadowBlur = 24;
-  ctx.fill();
-  ctx.restore();
-  comet.x += comet.vx;
-  comet.y += comet.vy;
-  comet.life++;
-  if (
-    comet.x > canvas.width + 100 ||
-    comet.y > canvas.height + 100 ||
-    comet.life > 180
-  ) {
-    comet = null;
-  }
 }
 
 // Add a pulsing galactic core at the center
@@ -381,20 +260,16 @@ function drawRipples() {
   }
 }
 
-// Update animation loop to include ripples
+// Update animation loop to exclude comet
 function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawNebula();
-  drawAurora();
-  drawPlanets();
   drawGalacticCore();
   drawStars();
   drawDust();
   moveStars();
   createShootingStar();
   drawShootingStars();
-  createComet();
-  drawComet();
   drawRipples();
   requestAnimationFrame(animateStars);
 }
