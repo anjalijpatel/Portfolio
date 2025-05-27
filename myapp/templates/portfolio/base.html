@@ -17,17 +17,23 @@
     <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
 
     <!-- Sidebar Navigation -->
-    <aside class="sidebar" id="sidebar">
-      <h1>Anjali</h1>
+    <aside class="sidebar cosmic-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-logo">🪐</span>
+        <h1 class="sidebar-title">Anjali</h1>
+      </div>
       <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
+        <ul class="sidebar-nav">
+          <li><a href="/"><span class="nav-icon">🌌</span> Home</a></li>
+          <li><a href="/about"><span class="nav-icon">👩‍🚀</span> About</a></li>
+          <li><a href="/projects"><span class="nav-icon">🚀</span> Projects</a></li>
+          <li><a href="/blog"><span class="nav-icon">📝</span> Blog</a></li>
+          <li><a href="/contact"><span class="nav-icon">📡</span> Contact</a></li>
         </ul>
       </nav>
+      <div class="sidebar-footer">
+        <span class="sidebar-quote">"Keep looking up!"</span>
+      </div>
     </aside>
 
     <!-- Main Content -->
@@ -37,10 +43,10 @@
       </header>
 
       <main>{% block content %}{% endblock %}</main>
-
-      <footer class="footer">
-        <p>© 2025 Anjali Patel. Built with 💜, Django, and cosmic dreams.</p>
-      </footer>
     </div>
+
+    <footer class="footer">
+      <p>© 2025 Anjali Patel</p>
+    </footer>
   </body>
 </html>

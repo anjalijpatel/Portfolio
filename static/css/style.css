@@ -5,6 +5,16 @@ body {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   color: #fff;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #stars-canvas {
@@ -24,60 +34,103 @@ body {
   padding: 1rem;
   color: #00ffff;
   position: fixed;
-  z-index: 1001;
+  top: 0;
+  left: 0;
+  z-index: 1100;
   background: transparent;
 }
 
-/* Sidebar (Hidden by default) */
-.sidebar {
-  width: 240px;
-  background: rgba(0, 0, 0, 0.85);
-  padding: 1rem;
+.cosmic-sidebar {
   position: fixed;
   top: 0;
-  left: -260px;
+  left: -260px; 
   height: 100vh;
-  z-index: 1000;
-  transition: left 0.3s ease;
+  width: 240px;
+  background: linear-gradient(160deg, #181c2f 80%, #2e1a47 100%);
+  color: #e0e6ff;
+  box-shadow: 0 0 32px 0 #1a1a2e88;
+  border-right: 2px solid #3a2c5e;
+  padding: 0 0 24px 0;
+  z-index: 1002;
+  overflow-y: auto;
+  transition: left 0.3s cubic-bezier(.77,0,.18,1);
 }
 
-.sidebar.active {
+/* Sidebar open state */
+.cosmic-sidebar.open {
   left: 0;
 }
 
-.sidebar h1 {
-  color: #00ffff;
-  font-family: "Orbitron", sans-serif;
-  margin-top: 1rem;
+/* .main-content stays as is, no margin-left needed */
+.main-content {
+  flex: 1 0 auto;
+  margin-left: 0;
+  padding: 2rem;
+  transition: margin-left 0.3s cubic-bezier(.77,0,.18,1);
 }
 
-.sidebar ul {
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 24px 0 12px 0;
+  justify-content: center;
+  border-bottom: 1px solid #2e1a47;
+}
+.sidebar-logo {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+.sidebar-title {
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: #fff;
+}
+.sidebar-nav {
   list-style: none;
   padding: 0;
+  margin: 32px 0 0 0;
 }
-
-.sidebar a {
-  color: white;
+.sidebar-nav li {
+  margin: 18px 0;
+}
+.sidebar-nav a {
+  color: #e0e6ff;
   text-decoration: none;
-  display: block;
-  padding: 0.5rem 0;
+  font-size: 1.1rem;
+  padding: 8px 24px;
+  border-radius: 20px 0 0 20px;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s, color 0.2s;
 }
-
-.sidebar a:hover {
-  color: #00ffff;
+.sidebar-nav a:hover, .sidebar-nav a:focus {
+  background: rgba(120,80,255,0.18);
+  color: #fff;
+}
+.nav-icon {
+  margin-right: 12px;
+  font-size: 1.2em;
+}
+.sidebar-footer {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #b8b8ff;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  letter-spacing: 1px;
 }
 
 /* Main Content */
 .main-content {
+  flex: 1 0 auto;
   margin-left: 0;
   padding: 2rem;
-  transition: margin-left 0.3s ease;
+  transition: margin-left 0.3s cubic-bezier(.77,0,.18,1);
 }
-
-.sidebar.active ~ .main-content {
-  margin-left: 240px;
-}
-
 
 /* Header */
 .header {
@@ -135,9 +188,21 @@ body {
 }
 
 .footer {
+  flex-shrink: 0;
+  width: 100%;
   text-align: center;
-  margin-top: 2rem;
-  opacity: 0.7;
+  margin-top: 0;
+  padding: 1rem 0;
+  /* background: linear-gradient(90deg, #191c2b 0%, #23244d 60%, #2e1a47 100%); */
+  color: #b8b8ff;
+  /* box-shadow: 0 -2px 24px #120c2e88; */
+  /* border-top: 1px solid #28204a; */
+  opacity: 1;
+  font-family: 'Orbitron', 'Montserrat', 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Animations */
