@@ -4,8 +4,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anjali Patel | Cosmic Portfolio</title>
+    <title>Anjali Patel</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/favicon.ico' %}"
+    />
     <script src="{% static 'js/script.js' %}" defer></script>
   </head>
   <body>
@@ -19,16 +24,27 @@
     <!-- Sidebar Navigation -->
     <aside class="sidebar cosmic-sidebar" id="sidebar">
       <div class="sidebar-header">
-        <span class="sidebar-logo">🪐</span>
+        {% comment %} <span class="sidebar-logo">🪐</span>
         <h1 class="sidebar-title">Anjali</h1>
+        {% endcomment %}
       </div>
       <nav>
         <ul class="sidebar-nav">
-          <li><a href="/"><span class="nav-icon">🌌</span> Home</a></li>
-          <li><a href="/about"><span class="nav-icon">👩‍🚀</span> About</a></li>
-          <li><a href="/projects"><span class="nav-icon">🚀</span> Projects</a></li>
-          <li><a href="/blog"><span class="nav-icon">📝</span> Blog</a></li>
-          <li><a href="/contact"><span class="nav-icon">📡</span> Contact</a></li>
+          <li>
+            <a href="/"><span class="nav-icon">🌌</span> Home</a>
+          </li>
+          <li>
+            <a href="/about"><span class="nav-icon">👩‍🚀</span> About</a>
+          </li>
+          <li>
+            <a href="/projects"><span class="nav-icon">🚀</span> Projects</a>
+          </li>
+          <li>
+            <a href="/blog"><span class="nav-icon">📝</span> Blog</a>
+          </li>
+          <li>
+            <a href="/contact"><span class="nav-icon">📡</span> Contact</a>
+          </li>
         </ul>
       </nav>
       <div class="sidebar-footer">
@@ -46,7 +62,7 @@
     </div>
 
     <footer class="footer">
-      <p>© 2025 Anjali Patel</p>
+      <p>© 2025 Anjali Patel - all rights reserved.</p>
     </footer>
   </body>
 </html>

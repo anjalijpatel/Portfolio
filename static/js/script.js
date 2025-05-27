@@ -1,6 +1,6 @@
 function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.classList.toggle('open');
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("open");
 }
 
 // Cosmic Star Field Background
@@ -275,3 +275,20 @@ function animateStars() {
 }
 
 animateStars();
+
+// Sidebar close on outside click
+function closeSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  if (sidebar.classList.contains("open")) {
+    sidebar.classList.remove("open");
+  }
+}
+
+document.addEventListener("click", function (e) {
+  const sidebar = document.getElementById("sidebar");
+  const hamburger = document.querySelector(".hamburger");
+  if (!sidebar.classList.contains("open")) return;
+  if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+    closeSidebar();
+  }
+});
