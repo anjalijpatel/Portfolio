@@ -30,37 +30,95 @@ body {
 
 /* Hamburger icon */
 .hamburger {
-  font-size: 28px;
-  cursor: pointer;
-  padding: 1rem;
-  color: #00ffff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1100;
-  background: transparent;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 9999 !important;
+  color: #00ffff !important;
+  background: rgba(20, 20, 40, 0.7) !important;
+  border-radius: 0 0 18px 0 !important;
+  padding: 1rem !important;
+  font-size: 32px !important;
+  display: block !important;
+  box-shadow: 0 2px 12px #00ffff33;
 }
 
+/* Floating Sidebar Menu */
 .cosmic-sidebar {
   position: fixed;
-  top: 0;
-  left: -260px;
-  height: 100vh;
-  width: 240px;
-  background: linear-gradient(160deg, #181c2f 80%, #2e1a47 100%);
-  color: #e0e6ff;
-  box-shadow: 0 0 32px 0 #1a1a2e88;
-  border-right: 2px solid #3a2c5e;
-  padding: 0 0 24px 0;
-  z-index: 1002;
-  overflow-y: auto;
-  transition: left 0.3s cubic-bezier(0.77, 0, 0.18, 1);
-  animation: sidebarFadeIn 1.1s cubic-bezier(0.4, 2, 0.6, 1);
+  top: 60px; /* below hamburger */
+  left: 0;
+  width: 100vw;
+  height: auto;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* Sidebar open state */
 .cosmic-sidebar.open {
-  left: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-header,
+.sidebar-footer {
+  display: none;
+}
+
+.sidebar-nav {
+  display: flex;
+  gap: 2rem;
+  background: rgba(30, 24, 60, 0.75);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px #1a1a2e55;
+  padding: 1.2rem 2.5rem;
+  margin: 0;
+  align-items: center;
+  backdrop-filter: blur(8px);
+}
+
+.sidebar-nav li {
+  margin: 0;
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.sidebar-nav a {
+  color: #e0e6ff;
+  font-size: 1.15rem;
+  padding: 0.7em 1.5em;
+  border-radius: 2rem;
+  background: linear-gradient(90deg, #2e1a47 0%, #7f7fff 100%);
+  box-shadow: 0 2px 12px #2e1a4780;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border: none;
+  outline: none;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a:focus {
+  background: linear-gradient(90deg, #7f7fff 0%, #2e1a47 100%);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 4px 24px #7f7fff88;
+}
+
+.nav-icon {
+  margin-right: 10px;
+  font-size: 1.3em;
 }
 
 /* .main-content stays as is, no margin-left needed */
@@ -251,6 +309,7 @@ body {
 .header {
   text-align: center;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 /* Hero Section */
@@ -388,3 +447,10 @@ body {
     filter: blur(0);
   }
 }
+
+/* Hide sidebar on large screens if you want mobile-only floating menu */
+/* @media (min-width: 900px) {
+  .cosmic-sidebar {
+    display: none ;
+  }
+} */
