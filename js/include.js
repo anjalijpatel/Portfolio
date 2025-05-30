@@ -10,11 +10,11 @@ function includeHTML(id, file, callback) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  includeHTML("include-header", "../components/header.html", function() {
+  includeHTML("include-header", "components/header.html", function() {
     // Now that header (and canvas) is loaded, load script.js
     var s = document.createElement('script');
     s.src = '../js/script.js';
     document.body.appendChild(s);
   });
-  includeHTML("include-footer", "../components/footer.html");
+  includeHTML("include-footer", "components/footer.html");
 });
