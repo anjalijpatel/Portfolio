@@ -46,9 +46,9 @@ body {
 /* Floating Sidebar Menu */
 .cosmic-sidebar {
   position: fixed;
-  top: 60px; /* below hamburger */
+  top: 60px;
   left: 0;
-  width: 100vw;
+  width: auto;
   height: auto;
   background: transparent;
   box-shadow: none;
@@ -56,7 +56,8 @@ body {
   padding: 0;
   z-index: 2000;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
@@ -74,14 +75,16 @@ body {
 
 .sidebar-nav {
   display: flex;
-  gap: 2rem;
-  background: rgba(30, 24, 60, 0.75);
-  border-radius: 2rem;
-  box-shadow: 0 8px 32px #1a1a2e55;
-  padding: 1.2rem 2.5rem;
+  flex-direction: column;
+  gap: 0rem;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0.5rem 0.5rem;
   margin: 0;
-  align-items: center;
-  backdrop-filter: blur(8px);
+  align-items: flex-start;
+  backdrop-filter: none;
+  list-style: none;
 }
 
 .sidebar-nav li {
@@ -96,8 +99,8 @@ body {
   font-size: 1.15rem;
   padding: 0.7em 1.5em;
   border-radius: 2rem;
-  background: linear-gradient(90deg, #2e1a47 0%, #7f7fff 100%);
-  box-shadow: 0 2px 12px #2e1a4780;
+  background: none;
+  box-shadow: none;
   text-decoration: none;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   display: flex;
@@ -110,15 +113,10 @@ body {
 
 .sidebar-nav a:hover,
 .sidebar-nav a:focus {
-  background: linear-gradient(90deg, #7f7fff 0%, #2e1a47 100%);
+  background: rgba(127,127,255,0.12);
   color: #fff;
   transform: scale(1.08);
-  box-shadow: 0 4px 24px #7f7fff88;
-}
-
-.nav-icon {
-  margin-right: 10px;
-  font-size: 1.3em;
+  box-shadow: none;
 }
 
 /* .main-content stays as is, no margin-left needed */
@@ -446,6 +444,19 @@ body {
     transform: translateX(0) scale(1);
     filter: blur(0);
   }
+}
+
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(20,20,40,0.35);
+  z-index: 1999;
+  transition: opacity 0.3s;
+}
+.cosmic-sidebar.open ~ #sidebar-overlay {
+  display: block;
+  opacity: 1;
 }
 
 /* Hide sidebar on large screens if you want mobile-only floating menu */

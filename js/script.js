@@ -3,6 +3,16 @@ function toggleSidebar() {
   sidebar.classList.toggle("open");
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (overlay) {
+    overlay.onclick = function() {
+      sidebar.classList.remove('open');
+    };
+  }
+});
+
 // Cosmic Star Field Background
 const canvas = document.getElementById("stars-canvas");
 const ctx = canvas.getContext("2d");
