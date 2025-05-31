@@ -88,10 +88,10 @@ body {
 }
 
 .sidebar-nav li {
-  margin: 0;
-  opacity: 1;
-  transform: none;
-  animation: none;
+  margin: 8px 0;
+  opacity: 0;
+  transform: translateX(-24px) scale(0.98);
+  animation: navItemFadeIn 0.7s cubic-bezier(0.4, 2, 0.6, 1) forwards;
 }
 
 .sidebar-nav a {
@@ -113,7 +113,7 @@ body {
 
 .sidebar-nav a:hover,
 .sidebar-nav a:focus {
-  background: rgba(127,127,255,0.12);
+  background: rgba(127, 127, 255, 0.12);
   color: #fff;
   transform: scale(1.08);
   box-shadow: none;
@@ -150,7 +150,7 @@ body {
   margin: 32px 0 0 0;
 }
 .sidebar-nav li {
-  margin: 18px 0;
+  margin: 8px 0;
   opacity: 0;
   transform: translateX(-24px) scale(0.98);
   animation: navItemFadeIn 0.7s cubic-bezier(0.4, 2, 0.6, 1) forwards;
@@ -449,8 +449,11 @@ body {
 #sidebar-overlay {
   display: none;
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(20,20,40,0.35);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 20, 40, 0.35);
   z-index: 1999;
   transition: opacity 0.3s;
 }

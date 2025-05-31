@@ -27,7 +27,7 @@
 
 .glow-text {
   font-size: 2.5rem;
-  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-family: "Orbitron", "Montserrat", sans-serif;
   color: #fff;
   letter-spacing: 2px;
   text-shadow: 0 0 16px #7f7fff, 0 0 32px #2e1a47;
@@ -36,8 +36,12 @@
 }
 
 @keyframes glow {
-  from { text-shadow: 0 0 8px #7f7fff, 0 0 16px #2e1a47; }
-  to   { text-shadow: 0 0 24px #b8b8ff, 0 0 48px #5a3ea1; }
+  from {
+    text-shadow: 0 0 8px #7f7fff, 0 0 16px #2e1a47;
+  }
+  to {
+    text-shadow: 0 0 24px #b8b8ff, 0 0 48px #5a3ea1;
+  }
 }
 
 .intro {
@@ -100,8 +104,10 @@
 
 .photo-glow {
   position: absolute;
-  top: 50%; left: 50%;
-  width: 180px; height: 180px;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   background: radial-gradient(circle, #7f7fff55 0%, transparent 70%);
   transform: translate(-50%, -50%);
@@ -109,14 +115,20 @@
   animation: photo-glow 2.5s infinite alternate;
 }
 @keyframes photo-glow {
-  from { box-shadow: 0 0 24px #7f7fff88, 0 0 48px #2e1a4744; }
-  to   { box-shadow: 0 0 48px #b8b8ff88, 0 0 96px #5a3ea144; }
+  from {
+    box-shadow: 0 0 24px #7f7fff88, 0 0 48px #2e1a4744;
+  }
+  to {
+    box-shadow: 0 0 48px #b8b8ff88, 0 0 96px #5a3ea144;
+  }
 }
 
 .orbit-anim {
   position: absolute;
-  top: 50%; left: 50%;
-  width: 210px; height: 210px;
+  top: 50%;
+  left: 50%;
+  width: 210px;
+  height: 210px;
   border-radius: 50%;
   border: 2px dashed #b8b8ff44;
   transform: translate(-50%, -50%);
@@ -124,12 +136,15 @@
   animation: orbit-spin 8s linear infinite;
 }
 @keyframes orbit-spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg);}
-  100% { transform: translate(-50%, -50%) rotate(360deg);}
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
-
 /* Shooting star effect */
-.shooting-star {
+/* .shooting-star {
   position: absolute;
   top: 20%;
   left: 60%;
@@ -146,7 +161,7 @@
   10% { opacity: 1; }
   80% { opacity: 1; }
   100% { opacity: 0; transform: translateX(120px) scaleX(1);}
-}
+} */
 
 /* Responsive */
 @media (max-width: 800px) {
